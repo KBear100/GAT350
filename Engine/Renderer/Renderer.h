@@ -3,6 +3,8 @@
 #include "Math\Color.h"
 #include "Texture.h"
 #include "Math/Matrix3x3.h"
+#include <glad/glad.h>
+#include <SDL.h>
 
 struct SDL_Renderer;
 struct SDL_Window;
@@ -21,7 +23,7 @@ namespace Bear
 		void Initialize();
 		void ShutDown();
 
-		void CreateWindow(const char* name, int width, int height);
+		void CreateWindow(const char* name, int width, int height, bool fullscreen);
 		void BeginFrame();
 		void EndFrame();
 		void SetClearColor(const Color& color) { clearColor = color; }
@@ -54,5 +56,6 @@ namespace Bear
 
 		SDL_Renderer* m_renderer{ nullptr };
 		SDL_Window* m_window{ nullptr };
+		SDL_GLContext m_context;
 	};
 }
