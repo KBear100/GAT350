@@ -33,6 +33,9 @@
 #include "Renderer/Model.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
+#include "Renderer/Shader.h"
+
+#include "glm/glm.hpp"
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
