@@ -1,5 +1,6 @@
 #pragma once
 #include "rapidjson/document.h"
+#include "Math/MathUtils.h"
 #include <string>
 #include <vector>
 
@@ -25,4 +26,7 @@ namespace Bear::json
 	bool Get(const rapidjson::Value& value, const std::string& name, Rect& data);
 	bool Get(const rapidjson::Value& value, const std::string& name, std::vector<std::string>& data);
 	bool Get(const rapidjson::Value& value, const std::string& name, std::vector<int>& data);
+	bool Get(const rapidjson::Value& value, const std::string& name, glm::vec2& data);
+	bool Get(const rapidjson::Value& value, const std::string& name, glm::vec3& data);
+	bool Get(const rapidjson::Value& value, const std::string& name, glm::vec4& data);
 }

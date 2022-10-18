@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "Math/Transform.h"
 #include "Math/Rect.h"
+#include "Texture.h"
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
@@ -78,11 +79,13 @@ namespace Bear
 		SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
 		SDL_RenderDrawPointF(m_renderer, x, y);
 	}
+
 	void Renderer::DrawPoint(const Vector2& v, const Color& color)
 	{
 		SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
 		SDL_RenderDrawPointF(m_renderer, v.x, v.y);
 	}
+
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle, const Vector2& scale, const Vector2& registration)
 	{
 		Vector2 size = texture->GetSize();
@@ -99,7 +102,7 @@ namespace Bear
 
 		SDL_Point center{ (int)origin.x, (int)origin.y };
 
-		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, &center, SDL_FLIP_NONE);
+		//SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, &center, SDL_FLIP_NONE);
 	}
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration)
@@ -118,7 +121,7 @@ namespace Bear
 
 		SDL_Point center{ (int)origin.x, (int)origin.y };
 
-		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
+		//SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 	}
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration, bool flipH)
@@ -146,6 +149,6 @@ namespace Bear
 		SDL_Point center{ (int)origin.x, (int)origin.y };
 
 		SDL_RendererFlip flip = (flipH) ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-		SDL_RenderCopyEx(m_renderer, texture -> m_texture, &src, &dest, Math::RadToDeg(mx.GetRotation()), &center, flip);
+		//SDL_RenderCopyEx(m_renderer, texture -> m_texture, &src, &dest, Math::RadToDeg(mx.GetRotation()), &center, flip);
 	}
 }

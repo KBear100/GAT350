@@ -1,7 +1,6 @@
 #pragma once
 #include "Math\Vector2.h"
 #include "Math\Color.h"
-#include "Texture.h"
 #include "Math/Matrix3x3.h"
 #include <glad/glad.h>
 #include <SDL.h>
@@ -11,6 +10,7 @@ struct SDL_Window;
 
 namespace Bear
 {
+	class Texture;
 	struct Transform;
 	struct Rect;
 
