@@ -59,31 +59,16 @@ int main(int argc, char** argv)
 	Bear::g_renderer.CreateWindow("Neumont", 800, 600, false);
 	LOG("Window Initialized...");
 
-	// create vertex buffer
-	GLuint vbo = 0;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	// create vertex array
-	GLuint vao = 0;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3*sizeof(float)));
-
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6*sizeof(float)));
-
 	// create shader
 	std::shared_ptr<Bear::Shader> vs = Bear::g_resources.Get<Bear::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
 	std::shared_ptr<Bear::Shader> fs = Bear::g_resources.Get<Bear::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
+
+	//create vertex buffer
+	std::shared_ptr<Bear::VertexBuffer> vb = Bear::g_resources.Get<Bear::VertexBuffer>("box");
+	vb->CreateVertexBuffer(sizeof(vertices), 36, vertices);
+	vb->SetAttribute(0, 3, 8 * sizeof(float), 0);
+	vb->SetAttribute(1, 3, 8 * sizeof(float), 3 * sizeof(float));
+	vb->SetAttribute(2, 2, 8 * sizeof(float), 6 * sizeof(float));
 
 	//create material
 	std::shared_ptr<Bear::Material> material = Bear::g_resources.Get<Bear::Material>("Materials/box.mtrl");
@@ -94,6 +79,12 @@ int main(int argc, char** argv)
 
 	glm::vec3 cameraPosition{ 0, 2, 2 };
 	float speed = 3;
+
+	std::vector<Bear::Transform> transforms;
+	for (size_t i = 0; i < 1000; i++)
+	{
+		transforms.push_back({ {Bear::randomf(-10, 10), Bear::randomf(-10, 10), Bear::randomf(-10, 10)}, {Bear::randomf(360), 90, 0} });
+	}
 
 	bool quit = false;
 	while (!quit)
@@ -109,14 +100,20 @@ int main(int argc, char** argv)
 		if (Bear::g_inputSystem.GetKeyState(Bear::key_left) == Bear::InputSystem::KeyState::Held) cameraPosition.x -= speed * Bear::g_time.deltaTime;
 
 		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
+
 		//material->GetProgram()->SetUniform("scale", std::sin(Bear::g_time.time * 1)); //times scale and possition in basic.vert
 		//model = glm::eulerAngleXYZ(0.0f, Bear::g_time.time, 0.0f);
-		glm::mat4 mvp = projection * view * model;
-		material->GetProgram()->SetUniform("mvp", mvp);
 
 		Bear::g_renderer.BeginFrame();
 	
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		for (size_t i = 0; i < transforms.size(); i++)
+		{
+			transforms[i].rotation += glm::vec3{ 0, 90 * Bear::g_time.deltaTime, 0 };
+			glm::mat4 mvp = projection * view * (glm::mat4)transforms[i];
+			material->GetProgram()->SetUniform("mvp", mvp);
+
+			vb->Draw();
+		}
 
 		Bear::g_renderer.EndFrame();
 	}

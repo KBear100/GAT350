@@ -38,7 +38,7 @@ namespace Bear
 
 	void Model::Draw(Renderer& renderer, const Transform& transform)
 	{
-		Matrix3x3 mx = transform.matrix;
+		/*Matrix3x3 mx = transform.matrix;
 		//if (m_points.size() == 0) return;
 
 		//draw model
@@ -48,7 +48,7 @@ namespace Bear
 			Bear::Vector2 p2 = mx * m_points[i + 1];
 
 			renderer.DrawLine(p1, p2, m_color);
-		}
+		}*/
 	}
 
 	bool Model::Load(const std::string filename)
