@@ -157,7 +157,6 @@ namespace Bear
             GLint location = glGetUniformLocation(m_program, name.c_str());
             if (location == -1)
             {
-
                 LOG("Could not find uniform location: %s", name.c_str());
             }
             m_uniforms[name] = location;
