@@ -59,20 +59,8 @@ int main(int argc, char** argv)
 	Bear::g_renderer.CreateWindow("Neumont", 800, 600, false);
 	LOG("Window Initialized...");
 
-	// load scene 
-	auto scene = std::make_unique<Bear::Scene>();
-
-	rapidjson::Document document;
-	bool success = Bear::json::Load("Scenes/basic.scn", document);
-	if (!success)
-	{
-		LOG("error loading scene file %s.", "Scenes/basic.scn");
-	}
-	else
-	{
-		scene->Read(document);
-		scene->Initialize();
-	}
+	// load scene
+	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/basic.scn");
 
 	// create shader
 	std::shared_ptr<Bear::Shader> vs = Bear::g_resources.Get<Bear::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
@@ -113,15 +101,6 @@ int main(int argc, char** argv)
 		scene->Update();
 
 		Bear::g_renderer.BeginFrame();
-
-		for (size_t i = 0; i < transforms.size(); i++)
-		{
-			//transforms[i].rotation += glm::vec3{ 0, 90 * Bear::g_time.deltaTime, 0 };
-			//glm::mat4 mvp = projection * view * (glm::mat4)transforms[i];
-			//material->GetProgram()->SetUniform("mvp", mvp);
-
-			//vb->Draw();
-		}
 
 		scene->Draw(Bear::g_renderer);
 
