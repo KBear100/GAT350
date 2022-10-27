@@ -60,10 +60,10 @@ namespace Bear
 		m_actors.clear();
 	}
 
-	bool Scene::Create(std::string name, ...)
+	bool Scene::Create(std::string filename, ...)
 	{
 		rapidjson::Document document;
-		bool success = Bear::json::Load("Scenes/basic.scn", document);
+		bool success = Bear::json::Load(filename, document);
 		if (!success)
 		{
 			LOG("error loading scene file %s.", "Scenes/basic.scn");

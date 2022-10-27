@@ -7,9 +7,9 @@ namespace Bear
 	{
 		// update transform 
 
-		if (g_inputSystem.GetKeyState(key_left) == InputSystem::KeyState::Held)m_owner->m_transform.position.x += speed * g_time.deltaTime;
+		if (g_inputSystem.GetKeyState(key_left) == InputSystem::KeyState::Held)m_owner->m_transform.position.x -= speed * g_time.deltaTime;
 
-		if (g_inputSystem.GetKeyState(key_right) == InputSystem::KeyState::Held)m_owner->m_transform.position.x -= speed * g_time.deltaTime;
+		if (g_inputSystem.GetKeyState(key_right) == InputSystem::KeyState::Held)m_owner->m_transform.position.x += speed * g_time.deltaTime;
 
 		if (g_inputSystem.GetKeyState(key_up) == InputSystem::KeyState::Held)m_owner->m_transform.position.y += speed * g_time.deltaTime;
 
