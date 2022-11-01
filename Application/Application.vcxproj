@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl" />
+    <None Include="..\Build\Assets\Materials\grass.mtrl" />
     <None Include="..\Build\Assets\Materials\spot.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />

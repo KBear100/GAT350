@@ -72,7 +72,7 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName("Spot");
 		if (actor)
 		{
-			actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
+			//actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
 		}
 
 		scene->Update();

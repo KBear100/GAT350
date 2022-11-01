@@ -71,5 +71,8 @@
     <None Include="..\Build\Assets\Shaders\basic_phong.frag">
       <Filter>Resource Files\Lights</Filter>
     </None>
+    <None Include="..\Build\Assets\Materials\grass.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

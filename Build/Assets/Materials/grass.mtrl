@@ -1,0 +1,10 @@
+{ 
+    "program":"Shaders/basic.prog", 
+    "texture":"Sprites/grass.jpg", 
+    "color":[ 
+        1, 
+        1, 
+        1 
+    ], 
+    "shininess":100
+} 

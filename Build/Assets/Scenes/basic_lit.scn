@@ -30,6 +30,62 @@
     },
     {
       "type": "Actor",
+      "name": "Box",
+      "transform": {
+        "position": [
+          -2,
+          0,
+          -3
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/box.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Ground",
+      "transform": {
+        "position": [
+          0,
+          -0.75,
+          -12
+        ],
+        "scale": [
+          30,
+          30,
+          30
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/plane.obj",
+          "material_name": "Materials/grass.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
       "name": "Light",
       "transform": {
         "position": [
