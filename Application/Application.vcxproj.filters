@@ -59,9 +59,6 @@
     <None Include="..\Build\Assets\Shaders\basic_lit.vert">
       <Filter>Resource Files\Lights</Filter>
     </None>
-    <None Include="..\Build\Assets\Scenes\basic_lit.scn">
-      <Filter>Resource Files\Lights</Filter>
-    </None>
     <None Include="..\Build\Assets\Shaders\basic_phong.prog">
       <Filter>Resource Files\Lights</Filter>
     </None>
@@ -73,6 +70,24 @@
     </None>
     <None Include="..\Build\Assets\Materials\grass.mtrl">
       <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\texture.scn">
+      <Filter>Resource Files\Scene</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\basic_lit.scn">
+      <Filter>Resource Files\Scene</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\multi.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\texture_phong.prog">
+      <Filter>Resource Files\Lights</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\texture_phong.vert">
+      <Filter>Resource Files\Lights</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\texture_phong.frag">
+      <Filter>Resource Files\Lights</Filter>
     </None>
   </ItemGroup>
 </Project>

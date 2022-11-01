@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 	LOG("Window Initialized...");
 
 	// load scene
-	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/basic_lit.scn");
+	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/texture.scn");
 
 	bool quit = false;
 	while (!quit)
@@ -73,6 +73,13 @@ int main(int argc, char** argv)
 		if (actor)
 		{
 			//actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
+		}
+
+		auto material = Bear::g_resources.Get<Bear::Material>("Materials/multi.mtrl");
+		if (material)
+		{
+			//material->uv_offset.x += Bear::g_time.deltaTime;
+			//material->uv_offset.y += Bear::g_time.deltaTime;
 		}
 
 		scene->Update();
