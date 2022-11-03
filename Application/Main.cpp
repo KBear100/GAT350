@@ -69,10 +69,10 @@ int main(int argc, char** argv)
 
 		if (Bear::g_inputSystem.GetKeyState(Bear::key_escape) == Bear::InputSystem::KeyState::Pressed) quit = true;
 
-		auto actor = scene->GetActorFromName("Spot");
+		auto actor = scene->GetActorFromName("Ogre");
 		if (actor)
 		{
-			//actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
+			actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
 		}
 
 		auto material = Bear::g_resources.Get<Bear::Material>("Materials/multi.mtrl");

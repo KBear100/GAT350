@@ -1,0 +1,14 @@
+{ 
+    "program":"Shaders/normal_phong.prog",
+    "textures": 
+    [
+      "Sprites/ogre_diffuse.bmp",
+      "Sprites/ogre_normal.bmp"
+    ],
+    "color":[ 
+        1, 
+        1, 
+        1 
+    ], 
+    "shininess":100
+} 

@@ -1,6 +1,10 @@
 { 
     "program":"Shaders/texture_phong.prog",
-    "texture": "Sprites/llama.jpg",
+    "textures": [
+      "Sprites/lava-diffuse.png",
+      "Sprites/lava-specular.png",
+      "Sprites/lava-emissive.png"
+    ],
     "uv_tiling": [ 1, 1 ],
     "uv_offset": [0, 0],
     "color":[ 
@@ -8,5 +12,5 @@
         1, 
         1 
     ], 
-    "shininess":100
+    "shininess":16
 } 

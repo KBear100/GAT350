@@ -22,6 +22,7 @@ namespace Bear
 
 		bool Load(const std::string& filename, Renderer& renderer);
 
+		void SetActive(GLuint unit) { glActiveTexture(unit); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
 		Vector2 GetSize() const;
@@ -34,6 +35,5 @@ namespace Bear
 	private:
 		GLuint m_texture = 0;
 		GLenum m_target = GL_TEXTURE_2D;
-		GLuint m_unit = GL_TEXTURE0;
 	};
 }
