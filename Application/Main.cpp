@@ -72,7 +72,14 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName("Ogre");
 		if (actor)
 		{
-			actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
+			//actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
+		}
+
+		actor = scene->GetActorFromName("Light");
+		if (actor)
+		{
+			// move light using sin wave 
+			actor->m_transform.position.x = std::sin(Bear::g_time.time);
 		}
 
 		auto material = Bear::g_resources.Get<Bear::Material>("Materials/multi.mtrl");

@@ -1,5 +1,5 @@
 { 
-    "program":"Shaders/basic_phong.prog", 
+    "program":"Shaders/texture_phong.prog", 
     "texture":"Sprites/spot.png", 
     "color":[ 
         1, 

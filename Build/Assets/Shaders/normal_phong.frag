@@ -39,6 +39,7 @@ void phong (vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out 
 
 	// calculate light intensity with dot product (normal * light direction)
 	float intensity = max(dot(light_dir, normal), 0);
+
 	// caluculate diffuse color
 	diffuse = light.color * material.color * intensity;
 
@@ -56,7 +57,6 @@ void phong (vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out 
  
 void main()
 {
-
 	vec2 ttexcoord = (texcoord * material.uv_tiling) + material.uv_offset;
 
 	vec3 ambient;

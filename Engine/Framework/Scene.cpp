@@ -66,7 +66,7 @@ namespace Bear
 		bool success = Bear::json::Load(filename, document);
 		if (!success)
 		{
-			LOG("error loading scene file %s.", "Scenes/basic.scn");
+			LOG("error loading scene file %s.", filename);
 			return false;
 		}
 		else
