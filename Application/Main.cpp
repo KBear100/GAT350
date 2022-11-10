@@ -59,17 +59,23 @@ int main(int argc, char** argv)
 	Bear::g_renderer.CreateWindow("Neumont", 800, 600, false);
 	LOG("Window Initialized...");
 
+	Bear::g_gui.Initialize(Bear::g_renderer);
+
 	// load scene
 	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/texture.scn");
+
+	float x = 0;
 
 	bool quit = false;
 	while (!quit)
 	{
 		Bear::Engine::Instance().Update();
 
+		Bear::g_gui.BeginFrame(Bear::g_renderer);
+
 		if (Bear::g_inputSystem.GetKeyState(Bear::key_escape) == Bear::InputSystem::KeyState::Pressed) quit = true;
 
-		auto actor = scene->GetActorFromName("Ogre");
+		auto actor = scene->GetActorFromName("Tiger");
 		if (actor)
 		{
 			//actor->m_transform.rotation.y += Bear::g_time.deltaTime * 90.0f;
@@ -79,23 +85,30 @@ int main(int argc, char** argv)
 		if (actor)
 		{
 			// move light using sin wave 
-			actor->m_transform.position.x = std::sin(Bear::g_time.time);
+			actor->m_transform.position.x = x;
 		}
 
-		auto material = Bear::g_resources.Get<Bear::Material>("Materials/multi.mtrl");
-		if (material)
+		//auto material = Bear::g_resources.Get<Bear::Material>("Materials/multi.mtrl");
+		//if (material)
 		{
 			//material->uv_offset.x += Bear::g_time.deltaTime;
 			//material->uv_offset.y += Bear::g_time.deltaTime;
 		}
+
+		ImGui::Begin("Hello");
+		ImGui::Button("Murder");
+		ImGui::SliderFloat("Position", &x, -3.0f, 3.0f);
+		ImGui::End();
 
 		scene->Update();
 
 		Bear::g_renderer.BeginFrame();
 
 		scene->Draw(Bear::g_renderer);
+		Bear::g_gui.Draw();
 
 		Bear::g_renderer.EndFrame();
+		Bear::g_gui.EndFrame();
 	}
 
 	scene->RemoveAll();

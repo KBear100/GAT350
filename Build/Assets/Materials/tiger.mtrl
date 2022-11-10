@@ -1,0 +1,13 @@
+{ 
+    "program":"Shaders/lit/texture_normal.prog",
+    "textures": [
+      "Sprites/tiger_diffuse.png",
+      "Sprites/tiger_normal.png"
+    ],
+    "color":[
+      1,
+      1,
+      1
+    ],
+    "shininess":100
+} 

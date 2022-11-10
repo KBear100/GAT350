@@ -9,6 +9,7 @@ namespace Bear
 	ResourceManager g_resources;
 	PhysicsSystem g_physicsSystem;
 	EventManager g_eventManager;
+	GUI g_gui;
 
 	void Engine::Initialize()
 	{
@@ -22,6 +23,12 @@ namespace Bear
 
 	void Engine::Update()
 	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event))
+		{
+			g_gui.Update(event);
+		};
+
 		g_time.Tick();
 		g_eventManager.Update();
 		g_physicsSystem.Update();
@@ -38,6 +45,7 @@ namespace Bear
 		g_resources.Shutdown();
 		g_inputSystem.ShutDown();
 		g_audioSystem.ShutDown();
+		g_gui.Shutdown();
 		g_renderer.ShutDown();
 	}
 

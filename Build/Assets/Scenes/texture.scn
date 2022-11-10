@@ -2,29 +2,29 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Ogre",
+      "name": "Tiger",
       "transform": {
         "position": [
           0,
-          0,
+          -1,
           0
         ],
         "scale": [
-          1,
-          1,
-          1
+          0.01,
+          0.01,
+          0.01
         ],
         "rotation": [
           0,
-          0,
+          15,
           0
         ]
       },
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/ogre.obj",
-          "material_name": "Materials/ogre.mtrl"
+          "model_name": "Models/tiger.glb",
+          "material_name": "Materials/tiger.mtrl"
         }
       ]
     },
@@ -52,7 +52,7 @@
             1,
             1
           ],
-          "type_name": "directional",
+          "type_name": "point",
           "cutoff": 25.0,
           "exponent": 10.0
         }
