@@ -1,5 +1,5 @@
 { 
-    "program":"Shaders/lit/texture_normal.prog",
+    "program":"Shaders/lit/texture.prog",
     "textures": [
       "Sprites/tiger_diffuse.png",
       "Sprites/tiger_normal.png"

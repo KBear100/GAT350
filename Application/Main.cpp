@@ -104,7 +104,8 @@ int main(int argc, char** argv)
 
 		Bear::g_renderer.BeginFrame();
 
-		scene->Draw(Bear::g_renderer);
+		scene->PreRender(Bear::g_renderer);
+		scene->Render(Bear::g_renderer);
 		Bear::g_gui.Draw();
 
 		Bear::g_renderer.EndFrame();

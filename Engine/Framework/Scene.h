@@ -22,7 +22,8 @@ namespace Bear
 
 		void Update() override;
 		void Initialize() override;
-		void Draw(Renderer& renderer);
+		void PreRender(Renderer& renderer);
+		void Render(Renderer& renderer);
 		virtual bool Create(std::string name, ...) override;
 		
 		virtual bool Write(const rapidjson::Value& value) const override;

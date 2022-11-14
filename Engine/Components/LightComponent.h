@@ -3,6 +3,8 @@
 
 namespace Bear
 {
+	class Program;
+
 	class LightComponent : public Component
 	{
 	public:
@@ -19,6 +21,9 @@ namespace Bear
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
+
+
+		void SetProgram(std::shared_ptr<Program> programs, int index);
 
 	public:
 		Type type = Type::Point;

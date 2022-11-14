@@ -3,6 +3,8 @@
 
 namespace Bear
 {
+	class Program;
+
 	class CameraComponent : public Component
 	{
 	public:
@@ -10,8 +12,8 @@ namespace Bear
 
 		void Update() override;
 
-
 		void SetPerspective(float fov, float aspectRatio, float near, float far);
+		void SetProgram(std::shared_ptr<Program> programs);
 
 		const glm::mat4& GetProjection() { return m_projection; }
 		const glm::mat4& GetView() { return m_view; }

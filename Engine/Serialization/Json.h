@@ -5,6 +5,7 @@
 #include <vector>
 
 #define READ_DATA(value, data) Bear::json::Get(value, #data, data)
+#define READ_NAME_DATA(value, name, data) Bear::json::Get(value, name, data)
 
 namespace Bear
 {
