@@ -41,6 +41,7 @@
 #include "Renderer/Program.h"
 #include "Renderer/Material.h"
 #include "Renderer/VertexBuffer.h"
+#include "Renderer/CubemapTexture.h"
 
 #include "glm/glm.hpp"
 

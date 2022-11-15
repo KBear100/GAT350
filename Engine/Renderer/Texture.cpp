@@ -19,10 +19,10 @@ namespace Bear
 		Renderer& renderer = va_arg(args, Renderer);
 		va_end(args);
 
-		return Load(name, renderer);
+		return Load(name);
 	}
 
-	bool Texture::Load(const std::string& filename, Renderer& renderer)
+	bool Texture::Load(const std::string& filename)
 	{
 		// load surface
 		SDL_Surface* surface = IMG_Load(filename.c_str());
@@ -74,6 +74,32 @@ namespace Bear
 		//SDL_QueryTexture(m_texture, nullptr, nullptr, &(point).x, &(point).y);
 
 		return Vector2{0, 0};
+	}
+
+	GLenum Texture::GetInternalFormat(GLuint format)
+	{
+		GLenum internalFormat = SDL_PIXELFORMAT_UNKNOWN;
+		switch (format)
+		{
+		case SDL_PIXELFORMAT_RGB888:
+		case SDL_PIXELFORMAT_RGB24:
+			internalFormat = GL_RGB;
+			break;
+		case SDL_PIXELFORMAT_BGR888:
+		case SDL_PIXELFORMAT_BGR24:
+			internalFormat = GL_BGR;
+			break;
+		case SDL_PIXELFORMAT_RGBA8888:
+		case SDL_PIXELFORMAT_RGBA32:
+			internalFormat = GL_RGBA;
+			break;
+		case SDL_PIXELFORMAT_BGRA8888:
+		case SDL_PIXELFORMAT_BGRA32:
+			internalFormat = GL_BGRA;
+			break;
+		}
+
+		return internalFormat;
 	}
 
 	void Texture::FlipSurface(SDL_Surface* surface)

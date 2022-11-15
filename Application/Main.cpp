@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	Bear::g_gui.Initialize(Bear::g_renderer);
 
 	// load scene
-	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/texture.scn");
+	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/cubemap.scn");
 
 	float x = 0;
 
@@ -95,10 +95,10 @@ int main(int argc, char** argv)
 			//material->uv_offset.y += Bear::g_time.deltaTime;
 		}
 
-		ImGui::Begin("Hello");
+		/*ImGui::Begin("Hello");
 		ImGui::Button("Murder");
 		ImGui::SliderFloat("Position", &x, -3.0f, 3.0f);
-		ImGui::End();
+		ImGui::End();*/
 
 		scene->Update();
 
