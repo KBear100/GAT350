@@ -10,6 +10,10 @@ namespace Bear
 	const uint32_t key_left = SDL_SCANCODE_LEFT;
 	const uint32_t key_right = SDL_SCANCODE_RIGHT;
 	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
+	const uint32_t key_w = SDL_SCANCODE_W;
+	const uint32_t key_s = SDL_SCANCODE_S;
+	const uint32_t key_a = SDL_SCANCODE_A;
+	const uint32_t key_d = SDL_SCANCODE_D;
 
 	const uint32_t button_left = 0;
 	const uint32_t button_middle = 1;
@@ -45,7 +49,10 @@ namespace Bear
 		m_prevMouseButtonState = m_mouseButtonState;
 		int x, y;
 		uint32_t buttons = SDL_GetMouseState(&x, &y);
-		m_mousePosition = Bear::Vector2{ x, y };
+		m_mousePosition = glm::vec2{ x, y };
+		m_mouseRelative = m_mousePosition - m_prevMousePosition;
+		m_prevMousePosition = m_mousePosition;
+
 		m_mouseButtonState[0] = buttons & SDL_BUTTON_LMASK;
 		m_mouseButtonState[1] = buttons & SDL_BUTTON_MMASK;
 		m_mouseButtonState[2] = buttons & SDL_BUTTON_RMASK;
