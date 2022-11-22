@@ -58,11 +58,19 @@ int main(int argc, char** argv)
 
 	Bear::g_renderer.CreateWindow("Neumont", 800, 600, false);
 	LOG("Window Initialized...");
-
 	Bear::g_gui.Initialize(Bear::g_renderer);
 
+	// create framebuffer texture
+	auto texture = std::make_shared<Bear::Texture>();
+	texture->CreateTexture(512, 512);
+	Bear::g_resources.Add<Bear::Texture>("fb_texture", texture);
+
+	// create framebuffer
+	auto framebuffer = Bear::g_resources.Get<Bear::Framebuffer>("framebuffer", "fb_texture");
+	framebuffer->Unbind();
+
 	// load scene
-	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/cubemap.scn");
+	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/rtt.scn");
 
 	float x = 0;
 
@@ -114,10 +122,37 @@ int main(int argc, char** argv)
 
 		scene->Update();
 
-		Bear::g_renderer.BeginFrame();
+		{
+			auto actor = scene->GetActorFromName("RTT");
+			if (actor)
+			{
+				actor->SetActive(false);
+			}
+		}
 
+		// render pass 1 (render to framebuffer)
+		glViewport(0, 0, 512, 512);
+		framebuffer->Bind();
+
+		Bear::g_renderer.BeginFrame();
 		scene->PreRender(Bear::g_renderer);
 		scene->Render(Bear::g_renderer);
+		framebuffer->Unbind();
+
+		{
+			auto actor = scene->GetActorFromName("RTT");
+			if (actor)
+			{
+				actor->SetActive(true);
+			}
+		}
+
+		// render pass 2 (render to screen)
+		glViewport(0, 0, 800, 600);
+		Bear::g_renderer.BeginFrame();
+		scene->PreRender(Bear::g_renderer);
+		scene->Render(Bear::g_renderer);
+
 		Bear::g_gui.Draw();
 
 		Bear::g_renderer.EndFrame();
