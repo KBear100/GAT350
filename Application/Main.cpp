@@ -67,6 +67,8 @@ int main(int argc, char** argv)
 	float x = 0;
 
 	glm::vec3 rot = { 0, 0, 0 };
+	float ri = 1;
+	float interpolation = 0.5f;
 	bool quit = false;
 	while (!quit)
 	{
@@ -95,8 +97,19 @@ int main(int argc, char** argv)
 			//material->uv_offset.x += Bear::g_time.deltaTime;
 			//material->uv_offset.y += Bear::g_time.deltaTime;
 		}
+
+		auto program = Bear::g_resources.Get<Bear::Program>("Shaders/FX/reflection_refraction.prog");
+		if (program)
+		{
+			program->Use();
+			program->SetUniform("ri", ri);
+			program->SetUniform("interpolation", interpolation);
+		}
+
 		ImGui::Begin("Transform");
-		ImGui::SliderFloat3("Rotation", &rot[0], -360.0f, 360.0f);
+		ImGui::DragFloat3("Rotation", &rot[0]);
+		ImGui::DragFloat("Refraction", &ri, 0.01f, 1, 3);
+		ImGui::DragFloat("Interpolation", &interpolation, 0.01f, 0, 1);
 		ImGui::End();
 
 		scene->Update();
