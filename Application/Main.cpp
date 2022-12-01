@@ -1,49 +1,7 @@
 #include "Engine.h" 
 #include <iostream> 
 
-float vertices[] = {
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-						 
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-						 
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-						 
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-						 
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-						 
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f
-};
+#define POST_PROCESS
 
 int main(int argc, char** argv)
 {
@@ -62,7 +20,7 @@ int main(int argc, char** argv)
 
 	// create framebuffer texture
 	auto texture = std::make_shared<Bear::Texture>();
-	texture->CreateTexture(512, 512);
+	texture->CreateTexture(1024, 1024);
 	Bear::g_resources.Add<Bear::Texture>("fb_texture", texture);
 
 	// create framebuffer
@@ -106,12 +64,19 @@ int main(int argc, char** argv)
 			//material->uv_offset.y += Bear::g_time.deltaTime;
 		}
 
-		auto program = Bear::g_resources.Get<Bear::Program>("Shaders/FX/reflection_refraction.prog");
+		/*auto program = Bear::g_resources.Get<Bear::Program>("Shaders/FX/reflection_refraction.prog");
 		if (program)
 		{
 			program->Use();
 			program->SetUniform("ri", ri);
 			program->SetUniform("interpolation", interpolation);
+		}*/
+
+		auto program = Bear::g_resources.Get<Bear::Program>("shaders/postprocess/postprocess.prog");
+		if (program)
+		{
+			program->Use();
+			program->SetUniform("offset", Bear::g_time.time);
 		}
 
 		ImGui::Begin("Transform");
@@ -122,38 +87,44 @@ int main(int argc, char** argv)
 
 		scene->Update();
 
+#ifdef POST_PROCESS 
+		// don't draw post process actor when rendering to the framebuffer 
 		{
-			auto actor = scene->GetActorFromName("RTT");
+			auto actor = scene->GetActorFromName("PostProcess");
 			if (actor)
 			{
 				actor->SetActive(false);
 			}
 		}
-
-		// render pass 1 (render to framebuffer)
-		glViewport(0, 0, 512, 512);
+		// render pass 1 (render scene to framebuffer) 
+		Bear::g_renderer.SetViewport(0, 0, framebuffer -> GetSize().x, framebuffer->GetSize().y);
 		framebuffer->Bind();
-
 		Bear::g_renderer.BeginFrame();
 		scene->PreRender(Bear::g_renderer);
 		scene->Render(Bear::g_renderer);
 		framebuffer->Unbind();
 
+		// render pass 2 (render to screen) 
+		Bear::g_renderer.RestoreViewport();
+		Bear::g_renderer.BeginFrame();
+		scene->PreRender(Bear::g_renderer);
+
+		// draw only the post process actor to the screen 
 		{
-			auto actor = scene->GetActorFromName("RTT");
+			auto actor = scene->GetActorFromName("PostProcess");
 			if (actor)
 			{
 				actor->SetActive(true);
+				actor->Draw(Bear::g_renderer);
 			}
 		}
+#else 
+		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+#endif // POST_PROCESS 
 
-		// render pass 2 (render to screen)
-		glViewport(0, 0, 800, 600);
-		Bear::g_renderer.BeginFrame();
-		scene->PreRender(Bear::g_renderer);
-		scene->Render(Bear::g_renderer);
-
-		Bear::g_gui.Draw();
+		//Bear::g_gui.Draw();
 
 		Bear::g_renderer.EndFrame();
 		Bear::g_gui.EndFrame();
