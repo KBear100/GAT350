@@ -6,7 +6,7 @@ in vec3 refraction_dir;
 out vec4 fcolor;
 
 layout (binding = 0) uniform samplerCube cubemap;
-uniform float interpolation = 0.5;
+uniform float interpolation = 0.1;
 
 void main()
 {

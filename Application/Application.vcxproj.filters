@@ -209,5 +209,20 @@
     <None Include="..\Build\Assets\Materials\postprocess.mtrl">
       <Filter>Resource Files\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\final.scn">
+      <Filter>Resource Files\Scene</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\deer.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\needles.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\trunk.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\grassHill.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

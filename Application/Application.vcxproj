@@ -160,8 +160,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl" />
+    <None Include="..\Build\Assets\Materials\deer.mtrl" />
     <None Include="..\Build\Assets\Materials\grass.mtrl" />
+    <None Include="..\Build\Assets\Materials\grassHill.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
+    <None Include="..\Build\Assets\Materials\needles.mtrl" />
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\Build\Assets\Materials\postprocess.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
@@ -171,9 +174,11 @@
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\spot.mtrl" />
     <None Include="..\Build\Assets\Materials\tiger.mtrl" />
+    <None Include="..\Build\Assets\Materials\trunk.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cubemap.scn" />
+    <None Include="..\Build\Assets\Scenes\final.scn" />
     <None Include="..\Build\Assets\Scenes\rtt.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />

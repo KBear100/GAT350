@@ -1,0 +1,13 @@
+{ 
+    "program":"Shaders/lit/texture.prog",
+    "textures": [
+      "Sprites/needles_diffuse.png",
+      "Sprites/needles_normal.png"
+    ],
+    "color":[
+      1,
+      1,
+      1
+    ],
+    "shininess":100
+} 

@@ -1,7 +1,7 @@
 #include "Engine.h" 
 #include <iostream> 
 
-#define POST_PROCESS
+//#define POST_PROCESS
 
 int main(int argc, char** argv)
 {
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 	framebuffer->Unbind();
 
 	// load scene
-	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/rtt.scn");
+	auto scene = Bear::g_resources.Get<Bear::Scene>("Scenes/final.scn");
 
 	float x = 0;
 
@@ -45,10 +45,10 @@ int main(int argc, char** argv)
 		if (Bear::g_inputSystem.GetKeyState(Bear::key_escape) == Bear::InputSystem::KeyState::Pressed) quit = true;
 
 		auto actor = scene->GetActorFromName("Tiger");
-		if (actor)
+		/*if (actor)
 		{
 			actor->m_transform.rotation = Math::EulerToQuaternion(rot);
-		}
+		}*/
 
 		actor = scene->GetActorFromName("Light");
 		if (actor)
@@ -119,10 +119,10 @@ int main(int argc, char** argv)
 			}
 		}
 #else 
-		neu::g_renderer.BeginFrame();
-		scene->PreRender(neu::g_renderer);
-		scene->Render(neu::g_renderer);
-#endif // POST_PROCESS 
+		Bear::g_renderer.BeginFrame();
+		scene->PreRender(Bear::g_renderer);
+		scene->Render(Bear::g_renderer);
+#endif  POST_PROCESS 
 
 		//Bear::g_gui.Draw();
 

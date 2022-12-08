@@ -1,0 +1,268 @@
+{
+  "clear_color": [ 0, 0, 0 ],
+  "ambient_color": [ 0.2, 0.2, 0.2 ],
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "Skybox",
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/skybox.mtrl",
+          "depth_test": false
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Tiger",
+      "transform": {
+        "position": [
+          2.3,
+          -1,
+          -5
+        ],
+        "scale": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "rotation": [
+          0,
+          -15,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/tiger.glb",
+          "material_name": "Materials/tiger.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Deer",
+      "transform": {
+        "position": [
+          0,
+          -1,
+          0
+        ],
+        "scale": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "rotation": [
+          0,
+          -30,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/deer.glb",
+          "material_name": "Materials/deer.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Trunk",
+      "transform": {
+        "position": [
+          1,
+          -1,
+          -3
+        ],
+        "scale": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/tree_trunk.glb",
+          "material_name": "Materials/trunk.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Needles",
+      "transform": {
+        "position": [
+          1,
+          -1,
+          -3
+        ],
+        "scale": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/tree_needles.glb",
+          "material_name": "Materials/needles.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Grass",
+      "transform": {
+        "position": [
+          0,
+          -3.3,
+          -3
+        ],
+        "scale": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/grass.glb",
+          "material_name": "Materials/grassHill.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Water",
+      "transform": {
+        "position": [
+          -0,
+          -1.5,
+          1.2
+        ],
+        "scale": [
+          3,
+          3,
+          3
+        ],
+        "rotation": [
+          15,
+          0,
+          5
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/plane.obj",
+          "material_name": "Materials/reflection_refraction.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light",
+      "transform": {
+        "position": [
+          0,
+          5,
+          -5
+
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "type_name": "point",
+          "cutoff": 100.0,
+          "exponent": 10.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light2",
+      "transform": {
+        "position": [
+          5,
+          3,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            1,
+            0,
+            0
+          ],
+          "type_name": "spot",
+          "cutoff": 50.0,
+          "exponent": 3.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Camera",
+      "transform": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "CameraComponent",
+          "fov": 45,
+          "near": 0.1,
+          "far": 100
+        },
+        {
+          "type": "CameraController",
+          "speed": 3
+        }
+      ]
+    }
+  ]
+} 

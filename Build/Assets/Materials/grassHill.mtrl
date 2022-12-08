@@ -1,0 +1,12 @@
+{ 
+    "program":"Shaders/lit/texture.prog",
+    "textures": [
+      "Sprites/grass.png"
+    ],
+    "color":[
+      1,
+      1,
+      1
+    ],
+    "shininess":100
+} 

@@ -1,6 +1,6 @@
 { 
   "program":"Shaders/FX/skybox.prog",
-  "cubemap": "Sprites/Beach/",
+  "cubemap": "Sprites/Plants/",
     "cubemap_extension" : ".jpg",
     "color":[
       1,
